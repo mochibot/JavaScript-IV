@@ -145,7 +145,7 @@ const marvin = new ProjectManager({
   specialty: 'Debugging',
   catchPhrase: `Just code it.`,
   gradClassName: 'WEB10', 
-  favInstructor: yuki.name
+  favInstructor: 'Yuki'
 });
 
 const lita = new ProjectManager({
@@ -156,7 +156,7 @@ const lita = new ProjectManager({
   specialty: 'Design',
   catchPhrase: `Coding, you know you want it.`,
   gradClassName: 'UX2',
-  favInstructor: yuki.name
+  favInstructor: 'Yuki'
 });
 
 function intro(obj) {
