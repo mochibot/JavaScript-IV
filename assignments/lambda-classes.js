@@ -171,7 +171,7 @@ console.log('******Class begins******');
 console.log(yuki.speak());
 console.log(yuki.demo('Responsive web design'));
 //console.log(yuki.catchPhrase);
-console.log('******PRAssignment time time******')
+console.log('******PRAssignment time******')
 console.log(`${marvin.name} says "${marvin.catchPhrase}"`);
 console.log('******Astra is having trouble******');
 console.log(lita.debugsCode(astra, 'Responsive web design'));
