@@ -26,6 +26,15 @@ class Instructor extends Person {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}!`;
   }
+
+  points(student) {
+    //add or deduct 0-10 points from student grade
+    student.grade += Math.floor(Math.random() * 21 - 10);
+    if (student.grade > 100) {
+      student.grade = 100;
+    }
+    return `${this.name} graded ${student.name}'s assignments`;
+  }
 }
 
 class Student extends Person {
@@ -34,6 +43,7 @@ class Student extends Person {
     this.previousBackground = studentAttr.previousBackground;
     this.className = studentAttr.className;
     this.favSubjects = studentAttr.favSubjects;
+    this.grade = studentAttr.grade;
   }
 
   listsSubjects() {
@@ -46,6 +56,14 @@ class Student extends Person {
 
   sprintChallenge(subject) {
     return `${this.name} has begun a sprint challenge on ${subject}.`;
+  }
+
+  graduate() {
+    if (this.grade >= 70) {
+      return `${this.name} received a grade of ${this.grade} and graduates from Lambda School`;
+    } else {
+      return `${this.name} received a grad of ${this.grade} and needs to work harder`;
+    }
   }
 }
 
@@ -93,7 +111,8 @@ const astra = new Student({
   age: 30,
   previousBackground: 'selling cars',
   className: 'WEB20',
-  favSubjects: ['HTML', 'CSS']
+  favSubjects: ['HTML', 'CSS'],
+  grade: 80
 });
 
 const serena = new Student({
@@ -102,7 +121,8 @@ const serena = new Student({
   age: 23,
   previousBackground: 'fighting evil',
   className: 'UX4',
-  favSubjects: ['JavaScript', 'Python']
+  favSubjects: ['JavaScript', 'Python'],
+  grade: 80
 });
 
 const poseidon = new Student({
@@ -111,7 +131,8 @@ const poseidon = new Student({
   age: 9000000,
   previousBackground: 'Protecting seafarers',
   className: 'WEB20',
-  favSubjects: ['Java', 'Python', 'MySQL']
+  favSubjects: ['Java', 'Python', 'MySQL'],
+  grade: 80
 });
 
 //Here are the PMs
@@ -138,12 +159,14 @@ const lita = new ProjectManager({
   favInstructor: yuki.name
 });
 
-console.log(`${astra.name} is a student in ${astra.className} from ${astra.location}. He was ${astra.previousBackground} before Lambda School. ${astra.listsSubjects()}` );
+function intro(obj) {
+  return `${obj.name} is a student in ${obj.className} from ${obj.location}. ${obj.name} was ${obj.previousBackground} before Lambda School. ${obj.listsSubjects()}`;
+}
 
-console.log(`${serena.name} is a student in ${serena.className} from ${serena.location}. She was ${serena.previousBackground} before Lambda School. ${serena.listsSubjects()}`);
-
-console.log(`${poseidon.name} is a student in ${poseidon.className} from ${poseidon.location}. He was ${poseidon.previousBackground} before Lambda School. ${poseidon.listsSubjects()}`);
-
+console.log('******Intro******');
+console.log(intro(astra));
+console.log(intro(serena));
+console.log(intro(poseidon));
 console.log('******Class begins******');
 console.log(yuki.speak());
 console.log(yuki.demo('Responsive web design'));
@@ -164,7 +187,6 @@ console.log(astra.sprintChallenge('Responsive web design'));
 console.log(serena.sprintChallenge('Responsive web design'));
 console.log(poseidon.sprintChallenge('Responsive web design'));
 console.log('******The students completed the sprint challenge******');
-console.log('******The moment of turth******');
 console.log(lita.grade(serena, 'Responsive web design'));
 console.log(lita.grade(poseidon, 'Responsive web design'));
 console.log(lita.grade(astra, 'Responsive web design'));
@@ -172,5 +194,21 @@ console.log('******Next class begins******');
 console.log(tony.speak());
 console.log(tony.demo('\"this\"!'));
 console.log('******Everyone is wondering what is \"this\"?******');
-
-
+console.log('******Class go on for several months******');
+console.log(tony.points(serena));
+console.log(lita.points(poseidon));
+console.log(yuki.points(astra));
+console.log(tony.points(serena));
+console.log(lita.points(poseidon));
+console.log(marvin.points(astra));
+console.log(tony.points(serena));
+console.log(yuki.points(poseidon));
+console.log(marvin.points(astra));
+console.log(lita.points(astra));
+console.log(tony.points(serena));
+console.log(yuki.points(poseidon));
+console.log(marvin.points(astra));
+console.log('******The moment of truth******');
+console.log(serena.graduate());
+console.log(poseidon.graduate());
+console.log(astra.graduate());
